@@ -1,0 +1,33 @@
+app.js
+
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Welcome Home');
+});
+
+app.get('/user/:name', (req, res) => {
+    res.send('User: ' + req.params.name);
+});
+
+app.get('/search', (req, res) => {
+    res.send('Search: ' + req.query.name);
+});
+
+app.get('/url', (req, res) => {
+    res.send('URL: ' + req.protocol + '://' + req.get('host') + req.originalUrl);
+});
+
+app.listen(3000, () => console.log('Server running'));
+---->
+
+command: npm init -y
+         npm install express
+         node app.js
+----->
+
+http://localhost:3000/
+http://localhost:3000/user/Navya
+http://localhost:3000/search?name=Navya
+http://localhost:3000/url
