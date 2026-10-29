@@ -1,0 +1,24 @@
+app.js
+
+const express = require('express');
+const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
+app.post('/submit', (req, res) => {
+    res.send('Welcome ' + req.body.name);
+});
+
+app.listen(3000);
+-------------------------------------------------------------
+
+public/form.html
+
+<form action="/submit" method="POST">
+    Name: <input type="text" name="name">
+    <button type="submit">Submit</button>
+</form>
+------------------------------------------------------------
+
+http://localhost:3000/form.html
