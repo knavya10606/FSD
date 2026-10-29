@@ -1,0 +1,29 @@
+npm create vite@latest D2-react -- --template react
+-----------------------------------------------------------
+src/App.jsx
+
+import './App.css';
+
+function App() {
+  return (
+    <div className="box">
+      <h1>Student Details</h1>
+      <p>Name: Navya</p>
+      <p>Course: CSE</p>
+      <p>College: Vishnu Institute of Technology</p>
+    </div>
+  );
+}
+
+export default App;
+--------------------------------------------------------------
+
+src/app.css
+
+.box {
+  background-color: lightblue;
+  color: darkblue;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
