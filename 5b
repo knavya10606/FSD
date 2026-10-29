@@ -1,0 +1,35 @@
+npm create vite@latest . -- --template react
+
+-->
+src/app.jsx
+
+function App() {
+  const name = "Navya";
+  const course = "CSE";
+
+  return (
+    <div>
+      <h1>JSX Example</h1>
+      <h2>Student Details</h2>
+      <p>Name: {name}</p>
+      <p>Course: {course}</p>
+      <p>Welcome to ReactJS!</p>
+    </div>
+  );
+}
+
+export default App;
+
+-->
+src/main.jsx
+
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './app.jsx';
+import './index.css';
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
