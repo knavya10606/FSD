@@ -1,0 +1,36 @@
+npm init -y
+npm install express
+node app.js
+-->
+app.js
+
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+let students = [
+  { id: 1, name: "Navya" },
+  { id: 2, name: "Ravi" }
+];
+
+app.post('/students', (req, res) => {
+  students.push(req.body);
+  res.send("Student Added Successfully");
+});
+
+app.get('/students', (req, res) => {
+  res.json(students);
+});
+
+app.delete('/students/:id', (req, res) => {
+  students = students.filter(s => s.id != req.params.id);
+  res.send("Student Deleted Successfully");
+});
+
+app.listen(3000, () => {
+  console.log("Server running at http://localhost:3000");
+});
+-->
+
+http://localhost:3000/students
