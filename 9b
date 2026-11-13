@@ -1,0 +1,197 @@
+// Insert records
+db.students.insertMany([
+    {rollno: 1, name: "Navya", branch: "CSE", marks: 90},
+    {rollno: 2, name: "Rahul", branch: "ECE", marks: 85},
+    {rollno: 3, name: "Priya", branch: "CSE", marks: 95},
+    {rollno: 4, name: "Kiran", branch: "IT", marks: 80},
+    {rollno: 5, name: "Anu", branch: "CSE", marks: 88}
+]);
+
+// 1. find() - Display all records
+db.students.find();
+
+// 2. limit() - Display first 3 records
+db.students.find().limit(3);
+
+// 3. sort() - Sort marks in ascending order
+db.students.find().sort({marks: 1});
+
+// Sort marks in descending order
+db.students.find().sort({marks: -1});
+
+// 4. createIndex() - Create index
+db.students.createIndex({name: 1});
+
+// 5. aggregate() - Calculate average marks
+db.students.aggregate([
+    {
+        $group: {
+            _id: "$branch",
+            averageMarks: {$avg: "$marks"}
+        }
+    }
+]);
+-----------
+output
+
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6af691460e704ec17d230ff3'),
+    '1': ObjectId('6af691460e704ec17d230ff4'),
+    '2': ObjectId('6af691460e704ec17d230ff5'),
+    '3': ObjectId('6af691460e704ec17d230ff6'),
+    '4': ObjectId('6af691460e704ec17d230ff7')
+  }
+}
+
+
+[
+  {
+    _id: ObjectId('6af691460e704ec17d230ff3'),
+    rollno: 1,
+    name: 'Navya',
+    branch: 'CSE',
+    marks: 90
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff4'),
+    rollno: 2,
+    name: 'Rahul',
+    branch: 'ECE',
+    marks: 85
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff5'),
+    rollno: 3,
+    name: 'Priya',
+    branch: 'CSE',
+    marks: 95
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff6'),
+    rollno: 4,
+    name: 'Kiran',
+    branch: 'IT',
+    marks: 80
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff7'),
+    rollno: 5,
+    name: 'Anu',
+    branch: 'CSE',
+    marks: 88
+  }
+]
+
+
+[
+  {
+    _id: ObjectId('6af691460e704ec17d230ff3'),
+    rollno: 1,
+    name: 'Navya',
+    branch: 'CSE',
+    marks: 90
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff4'),
+    rollno: 2,
+    name: 'Rahul',
+    branch: 'ECE',
+    marks: 85
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff5'),
+    rollno: 3,
+    name: 'Priya',
+    branch: 'CSE',
+    marks: 95
+  }
+]
+
+
+[
+  {
+    _id: ObjectId('6af691460e704ec17d230ff6'),
+    rollno: 4,
+    name: 'Kiran',
+    branch: 'IT',
+    marks: 80
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff4'),
+    rollno: 2,
+    name: 'Rahul',
+    branch: 'ECE',
+    marks: 85
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff7'),
+    rollno: 5,
+    name: 'Anu',
+    branch: 'CSE',
+    marks: 88
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff3'),
+    rollno: 1,
+    name: 'Navya',
+    branch: 'CSE',
+    marks: 90
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff5'),
+    rollno: 3,
+    name: 'Priya',
+    branch: 'CSE',
+    marks: 95
+  }
+]
+
+
+[
+  {
+    _id: ObjectId('6af691460e704ec17d230ff5'),
+    rollno: 3,
+    name: 'Priya',
+    branch: 'CSE',
+    marks: 95
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff3'),
+    rollno: 1,
+    name: 'Navya',
+    branch: 'CSE',
+    marks: 90
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff7'),
+    rollno: 5,
+    name: 'Anu',
+    branch: 'CSE',
+    marks: 88
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff4'),
+    rollno: 2,
+    name: 'Rahul',
+    branch: 'ECE',
+    marks: 85
+  },
+  {
+    _id: ObjectId('6af691460e704ec17d230ff6'),
+    rollno: 4,
+    name: 'Kiran',
+    branch: 'IT',
+    marks: 80
+  }
+]
+
+
+name_1
+
+
+[
+  { _id: 'IT', averageMarks: 80 },
+  { _id: 'CSE', averageMarks: 91 },
+  { _id: 'ECE', averageMarks: 85 }
+]
