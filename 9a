@@ -1,0 +1,38 @@
+// Create collection
+db.createCollection("students");
+
+// Insert sample record
+db.students.insertOne({
+    rollno: 1,
+    name: "Navya",
+    branch: "CSE"
+});
+
+// Display collections
+db.getCollectionNames();
+
+// Drop collection
+db.students.drop();
+
+// Drop database
+db.dropDatabase();
+
+------------
+output :
+utput:
+{ ok: 1 }
+
+
+{
+  acknowledged: true,
+  insertedId: ObjectId('6af693e42349c2eaaa000a4a')
+}
+
+
+[ 'students' ]
+
+
+true
+
+
+{ ok: 1, dropped: 'db_458z6237w_4592f7gs8' }
