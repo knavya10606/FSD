@@ -1,0 +1,116 @@
+//insert 
+db.students.insert([
+  {rollno: 1, name: "Navya", branch: "CSE", marks: 90},
+  {rollno: 2, name: "Rahul", branch: "ECE", marks: 85},
+  {rollno: 3, name: "Priya", branch: "CSE", marks: 95},
+  {rollno: 4, name: "Kiran", branch: "IT", marks: 80}
+])
+
+//find
+db.students.find()
+
+//update 
+db.students.update(
+  {rollno: 2},
+  {$set: {marks: 92}}
+)
+
+db.students.find({rollno: 2})
+ 
+ //delete
+ db.students.remove({rollno: 4})
+
+ db.students.find()
+
+
+
+-------------------------------------
+ output
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6af69060008d62a87d23fa79'),
+    '1': ObjectId('6af69060008d62a87d23fa7a'),
+    '2': ObjectId('6af69060008d62a87d23fa7b'),
+    '3': ObjectId('6af69060008d62a87d23fa7c')
+  }
+}
+
+
+[
+  {
+    _id: ObjectId('6af69060008d62a87d23fa79'),
+    rollno: 1,
+    name: 'Navya',
+    branch: 'CSE',
+    marks: 90
+  },
+  {
+    _id: ObjectId('6af69060008d62a87d23fa7a'),
+    rollno: 2,
+    name: 'Rahul',
+    branch: 'ECE',
+    marks: 85
+  },
+  {
+    _id: ObjectId('6af69060008d62a87d23fa7b'),
+    rollno: 3,
+    name: 'Priya',
+    branch: 'CSE',
+    marks: 95
+  },
+  {
+    _id: ObjectId('6af69060008d62a87d23fa7c'),
+    rollno: 4,
+    name: 'Kiran',
+    branch: 'IT',
+    marks: 80
+  }
+]
+
+
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+[
+  {
+    _id: ObjectId('6af69060008d62a87d23fa7a'),
+    rollno: 2,
+    name: 'Rahul',
+    branch: 'ECE',
+    marks: 92
+  }
+]
+
+
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 1 }
+
+[
+  {
+    _id: ObjectId('6af69060008d62a87d23fa79'),
+    rollno: 1,
+    name: 'Navya',
+    branch: 'CSE',
+    marks: 90
+  },
+  {
+    _id: ObjectId('6af69060008d62a87d23fa7a'),
+    rollno: 2,
+    name: 'Rahul',
+    branch: 'ECE',
+    marks: 92
+  },
+  {
+    _id: ObjectId('6af69060008d62a87d23fa7b'),
+    rollno: 3,
+    name: 'Priya',
+    branch: 'CSE',
+    marks: 95
+  }
+]
